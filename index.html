@@ -114,7 +114,7 @@ footer a {
 	
 <script>
 
-
+var _reactJsxRuntime = require("react/jsx-runtime");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 class Countdown extends React.Component {
   constructor(...args) {
@@ -166,38 +166,56 @@ class Countdown extends React.Component {
     if (!seconds) {
       return null;
     }
-    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Promo Binance"), /*#__PURE__*/React.createElement("div", {
-      className: "countdown-wrapper"
-    }, days && /*#__PURE__*/React.createElement("div", {
-      className: "countdown-item"
-    }, /*#__PURE__*/React.createElement(SVGCircle, {
-      radius: daysRadius
-    }), days, /*#__PURE__*/React.createElement("span", null, "dias")), hours && /*#__PURE__*/React.createElement("div", {
-      className: "countdown-item"
-    }, /*#__PURE__*/React.createElement(SVGCircle, {
-      radius: hoursRadius
-    }), hours, /*#__PURE__*/React.createElement("span", null, "horas")), minutes && /*#__PURE__*/React.createElement("div", {
-      className: "countdown-item"
-    }, /*#__PURE__*/React.createElement(SVGCircle, {
-      radius: minutesRadius
-    }), minutes, /*#__PURE__*/React.createElement("span", null, "minutos")), seconds && /*#__PURE__*/React.createElement("div", {
-      className: "countdown-item"
-    }, /*#__PURE__*/React.createElement(SVGCircle, {
-      radius: secondsRadius
-    }), seconds, /*#__PURE__*/React.createElement("span", null, "segungdos"))));
+    return /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
+      children: [/*#__PURE__*/_reactJsxRuntime.jsx("h1", {
+        children: "Promo Binance"
+      }), /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
+        className: "countdown-wrapper",
+        children: [days && /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
+          className: "countdown-item",
+          children: [/*#__PURE__*/_reactJsxRuntime.jsx(SVGCircle, {
+            radius: daysRadius
+          }), days, /*#__PURE__*/_reactJsxRuntime.jsx("span", {
+            children: "dias"
+          })]
+        }), hours && /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
+          className: "countdown-item",
+          children: [/*#__PURE__*/_reactJsxRuntime.jsx(SVGCircle, {
+            radius: hoursRadius
+          }), hours, /*#__PURE__*/_reactJsxRuntime.jsx("span", {
+            children: "horas"
+          })]
+        }), minutes && /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
+          className: "countdown-item",
+          children: [/*#__PURE__*/_reactJsxRuntime.jsx(SVGCircle, {
+            radius: minutesRadius
+          }), minutes, /*#__PURE__*/_reactJsxRuntime.jsx("span", {
+            children: "minutos"
+          })]
+        }), seconds && /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
+          className: "countdown-item",
+          children: [/*#__PURE__*/_reactJsxRuntime.jsx(SVGCircle, {
+            radius: secondsRadius
+          }), seconds, /*#__PURE__*/_reactJsxRuntime.jsx("span", {
+            children: "segungdos"
+          })]
+        })]
+      })]
+    });
   }
 }
 const SVGCircle = ({
   radius
-}) => /*#__PURE__*/React.createElement("svg", {
-  className: "countdown-svg"
-}, /*#__PURE__*/React.createElement("path", {
-  fill: "none",
-  stroke: "#333",
-  "stroke-width": "4",
-  d: describeArc(50, 50, 48, 0, radius)
-}));
-ReactDOM.render( /*#__PURE__*/React.createElement(Countdown, {
+}) => /*#__PURE__*/_reactJsxRuntime.jsx("svg", {
+  className: "countdown-svg",
+  children: /*#__PURE__*/_reactJsxRuntime.jsx("path", {
+    fill: "none",
+    stroke: "#333",
+    "stroke-width": "4",
+    d: describeArc(50, 50, 48, 0, radius)
+  })
+});
+ReactDOM.render( /*#__PURE__*/_reactJsxRuntime.jsx(Countdown, {
   timeTillDate: "05 18 2019, 6:00 am",
   timeFormat: "MM DD YYYY, h:mm a"
 }), document.getElementById('app'));
