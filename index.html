@@ -7,239 +7,162 @@
     <title>Document</title>
 	
     <style>
-@import url('https://fonts.googleapis.com/css?family=Lato');
 
+	    @import 'https://fonts.googleapis.com/css?family=Lato';
 * {
-	box-sizing: border-box;
-}
+  outline: none; }
+
+body, html {
+  margin: 0;
+  background: #ddd; }
 
 body {
-	background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-	
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
+  font-family: 'Lato', 'Microsoft JhengHei', Arial, sans-serif; }
 
-	min-height: 100vh;
-	font-family: 'Lato', sans-serif;
-	margin: 0;
-}
+.countdown {
+  width: 360px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+  .countdown h3 {
+    margin: 0;
+    letter-spacing: 3.5px;
+    font-weight: normal;
+    padding-bottom: 30px;
+    font-size: 30px;
+    text-align: center; }
+    .countdown h3 span {
+      padding-left: 25px;
+      color: #709386; }
+  .countdown-timer {
+    width: 360px;
+    height: 70px;
+    background-color: #333;
+    color: #fefefe;
+    border-radius: 10px; }
+    .countdown-timer > * {
+      float: left;
+      width: 100px;
+      height: 70px;
+      padding: 0 10px;
+      font-size: 70px;
+      line-height: 70px;
+      text-align: center; }
+      .countdown-timer > * span {
+        display: block;
+        width: 100%;
+        height: 100%; }
+        .countdown-timer > * span.pop {
+          animation: pop .3s forwards; }
+    .countdown-timer .hours, .countdown-timer .minutes, .countdown-timer .seconds {
+      position: relative; }
+      .countdown-timer .hours::before, .countdown-timer .minutes::before, .countdown-timer .seconds::before {
+        position: absolute;
+        font-size: 18px;
+        line-height: initial;
+        top: -24px;
+        letter-spacing: 2px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #555; }
+      .countdown-timer .hours::after, .countdown-timer .minutes::after, .countdown-timer .seconds::after {
+        content: ':';
+        position: absolute;
+        line-height: 60px;
+        font-size: 60px;
+        top: 0;
+        right: -8px; }
+    .countdown-timer .hours::before {
+      content: 'Hours'; }
+    .countdown-timer .minutes::before {
+      content: 'Minutes'; }
+    .countdown-timer .seconds::before {
+      content: 'Seconds'; }
+    .countdown-timer .seconds::after {
+      display: none; }
 
-h1 {
-	letter-spacing: 2px;
-	text-align: center;
-	text-transform: uppercase;
-}
+@keyframes pop {
+  0% {
+    transform: scale(0.6); }
+  30% {
+    transform: scale(1.1); } }
 
-.countdown-wrapper {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-wrap: wrap;
-}
-
-.countdown-item {
-	color: #111;
-	font-size: 40px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-    line-height: 30px;
-	margin: 10px;
-    padding-top: 10px;
-	position: relative;
-	width: 100px;
-	height: 100px;
-}
-
-.countdown-item span {
-	color: #333;
-	font-size: 12px;
-	font-weight: 600;
-	text-transform: uppercase;
-}
-
-.countdown-svg {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100px;
-	height: 100px;
-}
-
-footer {
-    background-color: #222;
-    color: #fff;
-    font-size: 14px;
-    bottom: 0;
-    position: fixed;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 999;
-}
-
-footer p {
-    margin: 10px 0;
-}
-
-footer i {
-    color: red;
-}
-
-footer a {
-    color: #3c97bf;
-    text-decoration: none;
-}
 
     </style>
 </head>
 <body>
     
-<div id="app"></div>
-
-<footer>
-	<p>
-		Created with <i class="fa fa-heart"></i> by
-		<a target="_blank" href="https://florin-pop.com">Florin Pop</a>
-		- Learn how I built it
-		<a target="_blank" href="https://florin-pop.com/blog/2019/05/countdown-built-with-react/">in this post</a>
-	</p>
-</footer>
+<div class="countdown">
+  <h3>COUNTDOWN<span>Today</span></h3>
+  <div class="countdown-timer">
+    <div class="hours"><span>--</span></div>
+    <div class="minutes"><span>--</span></div>
+    <div class="seconds"><span>--</span></div>
+  </div>
+</div>
 
 </body>
 	
 	
 <script>
 
-var _reactJsxRuntime = require("react/jsx-runtime");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-class Countdown extends React.Component {
-  constructor(...args) {
-    super(...args);
-    _defineProperty(this, "state", {
-      days: undefined,
-      hours: undefined,
-      minutes: undefined,
-      seconds: undefined
-    });
-  }
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      const {
-        timeTillDate,
-        timeFormat
-      } = this.props;
-      const then = moment(timeTillDate, timeFormat);
-      const now = moment();
-      const countdown = moment(then - now);
-      const days = countdown.format('D');
-      const hours = countdown.format('HH');
-      const minutes = countdown.format('mm');
-      const seconds = countdown.format('ss');
-      this.setState({
-        days,
-        hours,
-        minutes,
-        seconds
-      });
-    }, 1000);
-  }
-  componentWillUnmount() {
-    if (this.interval) {
-      clearInterval(this.interval);
-    }
-  }
-  render() {
-    const {
-      days,
-      hours,
-      minutes,
-      seconds
-    } = this.state;
-    const daysRadius = mapNumber(days, 30, 0, 0, 360);
-    const hoursRadius = mapNumber(hours, 24, 0, 0, 360);
-    const minutesRadius = mapNumber(minutes, 60, 0, 0, 360);
-    const secondsRadius = mapNumber(seconds, 60, 0, 0, 360);
-    if (!seconds) {
-      return null;
-    }
-    return /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
-      children: [/*#__PURE__*/_reactJsxRuntime.jsx("h1", {
-        children: "Promo Binance"
-      }), /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
-        className: "countdown-wrapper",
-        children: [days && /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
-          className: "countdown-item",
-          children: [/*#__PURE__*/_reactJsxRuntime.jsx(SVGCircle, {
-            radius: daysRadius
-          }), days, /*#__PURE__*/_reactJsxRuntime.jsx("span", {
-            children: "dias"
-          })]
-        }), hours && /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
-          className: "countdown-item",
-          children: [/*#__PURE__*/_reactJsxRuntime.jsx(SVGCircle, {
-            radius: hoursRadius
-          }), hours, /*#__PURE__*/_reactJsxRuntime.jsx("span", {
-            children: "horas"
-          })]
-        }), minutes && /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
-          className: "countdown-item",
-          children: [/*#__PURE__*/_reactJsxRuntime.jsx(SVGCircle, {
-            radius: minutesRadius
-          }), minutes, /*#__PURE__*/_reactJsxRuntime.jsx("span", {
-            children: "minutos"
-          })]
-        }), seconds && /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
-          className: "countdown-item",
-          children: [/*#__PURE__*/_reactJsxRuntime.jsx(SVGCircle, {
-            radius: secondsRadius
-          }), seconds, /*#__PURE__*/_reactJsxRuntime.jsx("span", {
-            children: "segungdos"
-          })]
-        })]
-      })]
-    });
-  }
-}
-const SVGCircle = ({
-  radius
-}) => /*#__PURE__*/_reactJsxRuntime.jsx("svg", {
-  className: "countdown-svg",
-  children: /*#__PURE__*/_reactJsxRuntime.jsx("path", {
-    fill: "none",
-    stroke: "#333",
-    "stroke-width": "4",
-    d: describeArc(50, 50, 48, 0, radius)
-  })
-});
-ReactDOM.render( /*#__PURE__*/_reactJsxRuntime.jsx(Countdown, {
-  timeTillDate: "05 18 2019, 6:00 am",
-  timeFormat: "MM DD YYYY, h:mm a"
-}), document.getElementById('app'));
+(function() {
+  var countHours, countMinutes, countSeconds, h, m, s;
 
-// From stackoverflow: https://stackoverflow.com/questions/5736398/how-to-calculate-the-svg-path-for-an-arc-of-a-circle
-function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
-  var angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
-  return {
-    x: centerX + radius * Math.cos(angleInRadians),
-    y: centerY + radius * Math.sin(angleInRadians)
-  };
-}
-function describeArc(x, y, radius, startAngle, endAngle) {
-  var start = polarToCartesian(x, y, radius, endAngle);
-  var end = polarToCartesian(x, y, radius, startAngle);
-  var largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
-  var d = ["M", start.x, start.y, "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y].join(" ");
-  return d;
-}
+  countHours = null;
 
-// Stackoverflow: https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
-function mapNumber(number, in_min, in_max, out_min, out_max) {
-  return (number - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-}
+  countMinutes = null;
+
+  countSeconds = null;
+
+  h = $(".hours span");
+
+  m = $(".minutes span");
+
+  s = $(".seconds span");
+
+  setInterval(function() {
+    var date, nowHours, nowMinutes, nowSeconds;
+    date = new Date();
+    nowHours = date.getHours();
+    nowMinutes = date.getMinutes();
+    nowSeconds = date.getSeconds();
+    if (countSeconds !== nowSeconds) {
+      s.addClass("pop");
+      setTimeout(function() {
+        return s.removeClass("pop");
+      }, 300);
+      countSeconds = 60 - nowSeconds;
+      if (nowSeconds === 0) {
+        countSeconds = 0;
+      }
+      s.text((countSeconds < 10 ? "0" : "") + countSeconds);
+    }
+    if (countMinutes !== nowMinutes && nowSeconds !== 0 || countMinutes === null) {
+      m.addClass("pop");
+      setTimeout(function() {
+        return m.removeClass("pop");
+      }, 300);
+      countMinutes = 59 - nowMinutes;
+      if (nowMinutes === 0) {
+        countMinutes = 59;
+      }
+      m.text((countMinutes < 10 ? "0" : "") + countMinutes);
+      countMinutes = nowMinutes;
+    }
+    if (countHours !== nowHours && nowMinutes === 0 && nowSeconds === 1 || countHours === null) {
+      h.addClass("pop");
+      setTimeout(function() {
+        return h.removeClass("pop");
+      }, 300);
+      countHours = 23 - nowHours;
+      h.text((countHours < 10 ? "0" : "") + countHours);
+      return countHours = nowHours;
+    }
+  }, 1000);
+
+}).call(this);
 
 </script>
 </html>
