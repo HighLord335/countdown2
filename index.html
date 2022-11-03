@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
     <title>Document</title>
+	
     <style>
-
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 * {
@@ -99,7 +99,7 @@ footer a {
 <body>
     
 <div id="app"></div>
-	
+
 <footer>
 	<p>
 		Created with <i class="fa fa-heart"></i> by
@@ -107,8 +107,6 @@ footer a {
 		- Learn how I built it
 		<a target="_blank" href="https://florin-pop.com/blog/2019/05/countdown-built-with-react/">in this post</a>
 	</p>
-	
-	<div id="output"></div>
 </footer>
 
 </body>
@@ -170,25 +168,25 @@ class Countdown extends React.Component {
     if (!seconds) {
       return null;
     }
-    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Countdown"), /*#__PURE__*/React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Promo Binance"), /*#__PURE__*/React.createElement("div", {
       className: "countdown-wrapper"
     }, days && /*#__PURE__*/React.createElement("div", {
       className: "countdown-item"
     }, /*#__PURE__*/React.createElement(SVGCircle, {
       radius: daysRadius
-    }), days, /*#__PURE__*/React.createElement("span", null, "days")), hours && /*#__PURE__*/React.createElement("div", {
+    }), days, /*#__PURE__*/React.createElement("span", null, "dias")), hours && /*#__PURE__*/React.createElement("div", {
       className: "countdown-item"
     }, /*#__PURE__*/React.createElement(SVGCircle, {
       radius: hoursRadius
-    }), hours, /*#__PURE__*/React.createElement("span", null, "hours")), minutes && /*#__PURE__*/React.createElement("div", {
+    }), hours, /*#__PURE__*/React.createElement("span", null, "horas")), minutes && /*#__PURE__*/React.createElement("div", {
       className: "countdown-item"
     }, /*#__PURE__*/React.createElement(SVGCircle, {
       radius: minutesRadius
-    }), minutes, /*#__PURE__*/React.createElement("span", null, "minutes")), seconds && /*#__PURE__*/React.createElement("div", {
+    }), minutes, /*#__PURE__*/React.createElement("span", null, "minutos")), seconds && /*#__PURE__*/React.createElement("div", {
       className: "countdown-item"
     }, /*#__PURE__*/React.createElement(SVGCircle, {
       radius: secondsRadius
-    }), seconds, /*#__PURE__*/React.createElement("span", null, "seconds"))));
+    }), seconds, /*#__PURE__*/React.createElement("span", null, "segungdos"))));
   }
 }
 const SVGCircle = ({
@@ -202,7 +200,7 @@ const SVGCircle = ({
   d: describeArc(50, 50, 48, 0, radius)
 }));
 ReactDOM.render( /*#__PURE__*/React.createElement(Countdown, {
-  timeTillDate: "05 26 2019, 6:00 am",
+  timeTillDate: "05 18 2019, 6:00 am",
   timeFormat: "MM DD YYYY, h:mm a"
 }), document.getElementById('app'));
 
