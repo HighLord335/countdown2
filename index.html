@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <title>Document</title>
     <style>
 
@@ -102,11 +101,19 @@ footer a {
 <div id="app"></div>
 	
 <footer>
-	
+	<div id="output"></div>
 </footer>
 
 </body>
+	
+	
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>	
 <script type="text/babel">
+
+
+const getMessage = () => "Hello World";
+document.getElementById('output').innerHTML = getMessage();
 
 class Countdown extends React.Component {
 	state = {
