@@ -2,8 +2,6 @@
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-scroll-behavior:smooth;
-    scroll-behavior: smooth;
 }
 
 body {
@@ -11,9 +9,6 @@ body {
   background: url("../images/bg-stars.svg"), #000000;
   height: 100vh;
   margin: 0;
-  display:grid;
-  place-items: center;
-  transition: all 1s;
 }
 
 main {
