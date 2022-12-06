@@ -29,7 +29,7 @@ main {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  padding-top: 15vh;
+  padding-top: 1vh;
   position: relative;
 }
 
